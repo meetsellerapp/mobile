@@ -11,3 +11,7 @@
 .menu-left .item-complex .item-content, .menu-left .item-radio .item-content {
     background-color: transparent;
 }
+.content-img {
+    width: 60%;
+    height: 50%;
+}
