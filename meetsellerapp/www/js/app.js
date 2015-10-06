@@ -1,73 +1,130 @@
-// Ionic Starter App
+angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecontrollers'])
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+        .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+            /* Prefered way:
+             $translateProvider.useUrlLoader('foo/bar.json');
+             $translateProvider.preferredLanguage('en');
+             // the example above actually requests foo/bar.json?lang=en
+             */
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+            /* Heavy way: */
+            $translateProvider.translations('en', {
+                TITLE: 'Hello',
+                FOO: 'This is a paragraph.',
+                BUTTON_LANG_EN: 'English',
+                BUTTON_LANG_DE: 'German',
+                BUTTON_LANG_NO: 'Norwegian',
+                PLURAL: "You have {NUM, plural, =0{no messages} one{1 message} other{# messages}}."
+            });
+            $translateProvider.translations('de', {
+                TITLE: 'Hallo',
+                FOO: 'Dies ist ein Paragraph.',
+                BUTTON_LANG_EN: 'Englisch',
+                BUTTON_LANG_DE: 'Deutsch',
+                BUTTON_LANG_NO: 'Norwegisch',
+                PLURAL: "Sie haben {NUM, plural, =0{keine Nachrichten haben} one{1 Nachricht} other{# Nachrichten}}."
+            });
+            $translateProvider.translations('no', {
+                TITLE: 'Hei',
+                FOO: 'Dette er en paragraf',
+                BUTTON_LANG_EN: 'Engelsk',
+                BUTTON_LANG_DE: 'Tysk',
+                BUTTON_LANG_NO: 'Norsk',
+                PLURAL: "Du har {NUM, plural, =0{ingen meldinger} one{1 melding} other{# meldinger}}."
+            });
+//            $translateProvider.useMessageFormatInterpolation();
+            $translateProvider.preferredLanguage('en');
+            $translateProvider.fallbackLanguage('en');
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+            $stateProvider
+                    .state('eventmenu', {
+                        url: "/event",
+                        abstract: true,
+                        templateUrl: "event-menu.html"
+                    })
+                    .state('eventmenu.home', {
+                        url: "/home",
+                        views: {
+                            'menuContent': {
+                                templateUrl: "templates/home.html",
+                                controller: "homeCtrl"
+                            }
+                        }
+                    })
+                    .state('eventmenu.checkin', {
+                        url: "/check-in",
+                        views: {
+                            'menuContent': {
+                                templateUrl: "check-in.html",
+                                controller: "CheckinCtrl"
+                            }
+                        }
+                    })
+                    .state('eventmenu.attendees', {
+                        url: "/attendees",
+                        views: {
+                            'menuContent': {
+                                templateUrl: "attendees.html",
+                                controller: "AttendeesCtrl"
+                            }
+                        }
+                    })
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+            $urlRouterProvider.otherwise("/event/home");
+        })
+        
+        .controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, $translate) {
+            $scope.$root.cls = "bar-positive"
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
+            $scope.attendees = [
+                {firstname: 'Nicolas', lastname: 'Cage'},
+                {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+                {firstname: 'Keanu', lastname: 'Reeves'},
+                {firstname: 'Steven', lastname: 'Seagal'}
+            ];
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
+            $scope.toggleLeft = function () {
+                $ionicSideMenuDelegate.toggleLeft();
+            };
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
-});
+
+        })
+
+        .controller('CheckinCtrl', function ($scope, $ionicNavBarDelegate) {
+            $scope.showForm = true;
+            $scope.$root.cls = "bar-assertive"
+            console.log($ionicNavBarDelegate);
+            $scope.shirtSizes = [
+                {text: 'Large', value: 'L'},
+                {text: 'Medium', value: 'M'},
+                {text: 'Small', value: 'S'}
+            ];
+
+            $scope.attendee = {};
+            $scope.submit = function () {
+                if (!$scope.attendee.firstname) {
+                    alert('Info required');
+                    return;
+                }
+                $scope.showForm = false;
+                $scope.attendees.push($scope.attendee);
+            };
+
+        })
+
+        .controller('AttendeesCtrl', function ($scope) {
+            console.log("AttendeesCtrl");
+            $scope.$root.cls = "bar-calm"
+            $scope.activity = [];
+            $scope.arrivedChange = function (attendee) {
+                var msg = attendee.firstname + ' ' + attendee.lastname;
+                msg += (!attendee.arrived ? ' has arrived, ' : ' just left, ');
+                msg += new Date().getMilliseconds();
+                $scope.activity.push(msg);
+                if ($scope.activity.length > 3) {
+                    $scope.activity.splice(0, 1);
+                }
+            };
+
+        });
