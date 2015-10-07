@@ -1,8 +1,8 @@
 angular.module('ionicApp.homecontrollers', [])
 
-.controller('homeCtrl', function ($scope , $translate) {
-    
-    var currentLang = "en"; 
+.controller('homeCtrl', function ($scope, $translate) {
+
+    var currentLang = "en";
     $scope.playlists = [
         {title: 'Reggae', id: 1},
         {title: 'Chill', id: 2},
@@ -11,8 +11,8 @@ angular.module('ionicApp.homecontrollers', [])
         {title: 'Rap', id: 5},
         {title: 'Cowbell', id: 6}
     ];
-    $scope.changeLanguage = function(key) {
-        console.log ("currentLang:" + currentLang);
+    $scope.changeLanguage = function (key) {
+        console.log("currentLang:" + currentLang);
 //        if (currentLang  === "en") {
 //            currentLang = "de";
 //            $translate.use( "de");
@@ -20,6 +20,9 @@ angular.module('ionicApp.homecontrollers', [])
 //            currentLang = "en";
 //            $translate.use( "en");
 //        }
-        $translate.use( key);
+        // $translate.use( key);
+    };
+    $scope.switchLanguage = function (key) {
+        $translate.use(key);
     };
 })

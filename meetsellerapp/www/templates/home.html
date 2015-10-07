@@ -1,20 +1,5 @@
-<ion-view>
-    <ion-nav-buttons side="right" >
-      <button class="button ng-scope" ng-click="changeLanguage('en')">
-        Language
-      </button>
-        <button class="button ng-scope" ng-click="changeLanguage('de')">
-        Language De
-      </button>
-    </ion-nav-buttons>
+<ion-view title = "{{ 'HOME' | translate }}">
     <ion-content>
-        <h1>{{ 'TITLE' | translate }}</h1>
-        <p>{{ 'FOO' | translate }}</p>
-        <input type="number" ng-model="translationData.NUM">
-        <p>{{ 'PLURAL' | translate:translationData}}</p>
-        <button ng-click="changeLanguage('en')">{{ 'BUTTON_LANG_EN' | translate}}</button>
-        <button ng-click="changeLanguage('de')">{{ 'BUTTON_LANG_DE' | translate}}</button>
-        <button ng-click="changeLanguage('no')">{{ 'BUTTON_LANG_NO' | translate}}</button>
         <ion-list>
             <ion-item >
                 <div class="list card">

@@ -1,0 +1,17 @@
+<ion-view>
+    <ion-content>
+        <h1>{{ 'HEADLINE' | translate }}</h1>
+        <div class="list">
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Language
+                </div>
+                <select ng-model="data.currentLang" ng-change="changeLanguage()">
+                    <option ng-repeat="i in data.listLang" value="{{i.code}}">{{i.title}}</option>
+                </select>
+            </label>
+
+        </div>
+    </ion-content>
+</ion-view>

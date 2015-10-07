@@ -9,10 +9,12 @@
         <link href="http://code.ionicframework.com/1.0.0-beta.2/css/ionic.min.css" rel="stylesheet">
         <script src="http://code.ionicframework.com/1.0.0-beta.2/js/ionic.bundle.min.js"></script>
         <script src="lib/angular-translate.min.js"></script>
+        <script src="lib/angular-translate-storage-local.min.js"></script>
 
         <link href="css/style.css" rel="stylesheet">
         <script src="js/app.js"></script>
         <script src="js/homeControllers.js"></script>
+        <script src="js/settingControllers.js"></script>
         <script src="cordova.js"></script>
     </head>
 
@@ -43,8 +45,10 @@
             </ion-header-bar>
             <ion-content>
             <ul class="list">
+            <a href="#/event/home" class="item">{{ 'HOME' | translate }}</a>
             <a href="#/event/check-in" class="item">Check-in</a>
             <a href="#/event/attendees" class="item">Attendees</a>
+            <a href="#/event/setting" class="item">{{ 'SETTING' | translate }}</a>
             </ul>
             </ion-content>
             </ion-side-menu>
