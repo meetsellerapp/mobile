@@ -17,26 +17,15 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
     };
 })
 .factory('loadFileConfig', function ($http) {
-    var platform = $http.get('configApp.json').success(function (response) {
-//        console.log("loadFileConfig:" + response.data.platform );
-        return response.data.platform;
-    });
-//    var factory = {};
-//
-//    factory.getMainConfig = function () {
-//
-//        return mainInfo;
-//
-//    };
-//
-//    return factory;
-
     return {
-        hello: function () {
-            return "hello";
-        },
-        platform: platform
-    }
+        getAll: function() {
+          var config = {
+              "platform" : "android",
+              "screen" : "480x800"
+          };
+          return config;
+        }
+    };
 })
 .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 
@@ -95,7 +84,7 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
 })
 
 .controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, $translate, loadFileConfig) {
-    $scope.$root.cls = "bar-positive"
+    $scope.$root.cls = "bar-linked";
 
     $scope.attendees = [
         {firstname: 'Nicolas', lastname: 'Cage'},
@@ -117,7 +106,7 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
     
 //    console.log("loadFileConfig:" + loadFileConfig.platform );
 //    loadFileConfig.platform.success(function(response) {
-//        console.log("loadFileConfig:" + response.data.platform );
+//        console.log("loadFileConfig:" + response.data.  );
 //        console.log("loadFileConfig:" + response.data.screen );
 //        $scope.platform = response.data.platform;
 //        $scope.platform = response.data.screen;
@@ -125,33 +114,49 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
 $scope.name = 'First ';
    
 })
-.directive("welcome", function() {
+.directive('notepad', function(loadFileConfig) {
   return {
-    restrict: "E",
-    controller: function($scope) {
-      $scope.words = [];
-
-      this.sayHello = function() {
-        $scope.words.push("hello");
-      };
-
-      this.sayHowdy = function() {
-        $scope.words.push("howdy");
-      };
-
-      this.sayHi = function() {
-        $scope.words.push("hi");
-      };
+    restrict: 'AE',
+    scope: {},
+    link: function(scope, elem, attrs) {
+      
     },
-
-    link: function(scope, element){
-      element.bind("mouseenter", function() {
-        console.log(scope.words);
-      });
-    }
-  }
+    templateUrl: 'templateurl.html'
+  };
 })
+.directive('isolateScopeWithController', function () {
+      
+    var controller = ['$scope', function ($scope) {
 
+          function init() {
+              $scope.items = angular.copy($scope.datasource);
+          }
+
+          init();
+
+          $scope.addItem = function () {
+              $scope.add();
+
+              //Add new customer to directive scope
+              $scope.items.push({
+                  name: 'New Directive Controller Item'
+              });
+          };
+      }],
+        
+      template = '<button ng-click="addItem()">Add Item</button><ul>' +
+                 '<li ng-repeat="item in items">{{ ::item.name }}</li></ul>';
+      
+      return {
+          restrict: 'EA', //Default in 1.3+
+          scope: {
+              datasource: '=',
+              add: '&',
+          },
+          controller: controller,
+          template: template
+      };
+})
 .controller('CheckinCtrl', function ($scope, $ionicNavBarDelegate) {
     $scope.showForm = true;
     $scope.$root.cls = "bar-assertive"
