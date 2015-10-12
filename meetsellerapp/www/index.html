@@ -43,14 +43,34 @@
 
                 <ion-side-menu side="left">
                 <ion-header-bar class="bar-linked">
-                <h1 class="title">Left Menu</h1>
+                    <div class="button-bar bar-dark">
+                        <a class="button button-icon icon ion-person-add"><span class="badge badge-assertive" style = "left: -6px;top:-6px;">3</span></a>
+                        <a class="button button-icon icon ion-flag"><span class="badge badge-assertive" style = "left: -6px;top:-6px;">3</span></a>
+                        <a class="button button-icon icon ion-images"><span class="badge badge-assertive" style = "left: -6px;top:-6px;">3</span></a>
+                    </div>
                 </ion-header-bar>
                 <ion-content>
+					<div class="button-bar bar-dark">
+                        <ion-option-button class="button button-dark ion-person-add" style="padding-top: 10px;padding-bottom: 10px;">
+							<span class="badge badge-assertive" style = "left: -8px;top:-9px;">3</span>
+							<br>Friends
+						</ion-option-button>
+						<ion-option-button class="button button-dark ion-flag" style="padding-top: 10px;padding-bottom: 10px;">
+							<span class="badge badge-assertive" style = "left: -8px;top:-9px;">3</span>
+							<br>Flags
+						</ion-option-button>
+						<ion-option-button class="button button-dark ion-images" style="padding-top: 10px;padding-bottom: 10px;">
+							<span class="badge badge-assertive" style = "left: -8px;top:-9px;">3</span>
+							<br>Images
+						</ion-option-button>
+						
+                    </div>
+				
                 <ul class="list">
-                <a href="#/event/home" class="item" ng-click="toggleLeft()">{{ 'HOME' | translate }} <span class="badge badge-assertive">3</span></a>
-                <a href="#/event/check-in" class="item">Check-in</a>
-                <a href="#/event/attendees" class="item">Attendees</a>
-                <a href="#/event/setting" class="item" ng-click="toggleLeft()">{{ 'SETTING' | translate }}</a>
+                <a href="#/event/home" class="item icon-left ion-home" ng-click="toggleLeft()">&nbsp; &nbsp;{{ 'HOME' | translate }} <span class="badge badge-assertive">3</span></a>
+                <a href="#/event/check-in" class="item icon-left ion-ios7-telephone-outline">&nbsp; &nbsp;Check-in</a>
+                <a href="#/event/attendees" class="item icon-left ion-person-stalker">&nbsp; &nbsp;Attendees</a>
+                <a href="#/event/setting" class="item icon-left ion-gear-a" ng-click="toggleLeft()">&nbsp; &nbsp;{{ 'SETTING' | translate }}</a>
                 </ul>
                 </ion-content>
                 </ion-side-menu>
