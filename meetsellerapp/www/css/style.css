@@ -22,3 +22,6 @@ border-top-width: 0px;
 	padding: 3px 7px;
 	font-size: 11px;
 }
+.full-image {
+    width: 80%;
+}
