@@ -5,21 +5,23 @@
     </button>
   </div>
   <h1 class="title">
-    <label class="item item-input label-search-bar">
+    <label class="item-input label-search-bar">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="search" placeholder="Search..."></h1>
     </label>
   <div class="buttons">
-    <button class="button button-clear icon ion-share" style = "margin-top : 13px;"></button>
+    <button class="button button-clear icon ion-ios-compose-outline" style = "margin-top : 13px;"></button>
   </div>
 </ion-header-bar>
 <ion-content>
     <div class="list">
         <div ng-repeat="playlist in playlists">
-            <div class="item item-avatar">
+            <div class="item item-avatar" style="padding-left: 10px;">
+                <div class="time-count-news"><i class="icon ion-ios-clock-outline"></i> 2d</div> 
                 <img src="img/smiley.png">
                 <h2 style="font-weight: bold;font-size: 18px;">Marty McFly</h2>
                 <p>Senior Developer</p>
+
             </div>
 
             <div class="item item-body">
@@ -30,24 +32,28 @@
                     consists of tabs, icons aligned left, within the card-footer.
                 </p>
                 <p>
-                    <a href="#" class="subdued">1 Like</a>
-                    <a href="#" class="subdued">5 Comments</a>
+                    <a href="#" class="subdued"> <i class="ion-thumbsup"></i> 1 Like</a>
+                    <a href="#" class="subdued"><i class="ion-chatbox"></i> 5 Comments</a>
                 </p>
             </div>
 
 
             <div class="item tabs tabs-secondary tabs-icon-left" style="background-color: #F1F3F5;" >
-                <a class="tab-item status-control" href="#">
-                    <i class="icon ion-thumbsup"></i>
+                <a class="tab-item button button-outline button-positive status-control" href="#" style="background-color: aliceblue;">
+                    
+                    Like
                 </a>
-                <a class="tab-item status-control" href="#">
-                    <i class="icon ion-share"></i>
+                <a class="tab-item button button-outline button-positive status-control" href="#">
+
+                    Share
                 </a>
-                <a class="tab-item status-control" href="#" style="max-width: 100%;margin-top: 8px;">
-                    <label class="item item-input" style="height: 30px;">
-                        <i class="icon ion-chatbox placeholder-icon"></i>
-                        <input type="search" placeholder="Comment...">
-                    </label>
+                <a class="tab-item button button-outline button-positive status-control" href="#">
+
+                    Read More
+                </a>
+                 <a class="tab-item button button-outline button-positive status-control" href="#" style="text-align: right;">
+
+                    <i class="icon ion-ios-more"></i>
                 </a>
             </div>
             <br>

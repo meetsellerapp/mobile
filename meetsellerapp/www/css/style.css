@@ -26,7 +26,8 @@ border-top-width: 0px;
     width: 80%;
 }
 .status-control {
-    margin-top: 7px;
+    border: 0px;
+    color: #666 !important; 
 }
 .header-bar {
 	height: 60px;
@@ -38,5 +39,10 @@ border-top-width: 0px;
 	background-color : #F2F2F2;
 	width: 80%;
 	-moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px;
-	border-bottom: 1px;
+	
+}
+.time-count-news {
+	position: absolute;
+    right: 10px;
+  	margin-top: 10px;
 }
