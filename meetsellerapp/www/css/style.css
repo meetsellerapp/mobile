@@ -28,3 +28,13 @@ border-top-width: 0px;
 .status-control {
     margin-top: 7px;
 }
+.header-bar {
+	height: 50px;
+}
+.label-search-bar {
+	height: 24px;
+	margin-top: 17px;
+	background-color : #d1d1d1;
+	width: 80%;
+	-moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px;
+}

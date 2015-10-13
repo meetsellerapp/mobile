@@ -85,7 +85,7 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
 
 .controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, $translate, loadFileConfig) {
     $scope.$root.cls = "bar-linked";
-    ionic.platform.fullScreen(true, false);
+    // ionic.platform.fullScreen(true, false);
 
     $scope.attendees = [
         {firstname: 'Nicolas', lastname: 'Cage'},
