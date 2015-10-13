@@ -1,6 +1,7 @@
 angular.module('ionicApp.homecontrollers', [])
 
 .controller('homeCtrl', function ($scope, $translate) {
+    ionic.platform.fullScreen(true, false);
 
     var currentLang = "en";
     $scope.playlists = [

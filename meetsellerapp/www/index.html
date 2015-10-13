@@ -16,6 +16,11 @@
         <script src="js/homeControllers.js"></script>
         <script src="js/settingControllers.js"></script>
         <script src="cordova.js"></script>
+        <script>
+          document.addEventListener('deviceready', function() {
+            ionic.Platform.detect();
+          });
+        </script>
     </head>
 
     <body>

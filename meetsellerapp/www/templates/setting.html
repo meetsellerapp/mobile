@@ -1,17 +1,16 @@
-<ion-view>
-    <ion-content>
-        <h1>{{ 'HEADLINE' | translate }}</h1>
-        <div class="list">
+<ion-view title="Delegates">
+  <div class="search-container">
+    <div class="search-inner">
+      <input ng-model="searchText" placeholder="Search">
+    </div>
+  </div>
 
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Language
-                </div>
-                <select ng-model="data.currentLang" ng-change="changeLanguage()">
-                    <option ng-repeat="i in data.listLang" value="{{i.code}}">{{i.title}}</option>
-                </select>
-            </label>
-
-        </div>
-    </ion-content>
+  <!-- <ion-tabs class="tabs-icon-only tabs-double">
+    <ion-tab title="A-Z">
+      <ion-content class="slide-under-header has-header has-tabs has-double-tabs" padding="false" delegate-handle="DelegateScroll">
+        <!-- stuff -->
+      </ion-content>
+    </ion-tab>
+    <!-- another ion-tab -->
+  <ion-tabs> -->
 </ion-view>
