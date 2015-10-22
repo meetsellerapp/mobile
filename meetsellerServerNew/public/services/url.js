@@ -1,5 +1,4 @@
 var Firebase = require("firebase");
-var wait = require('wait.for');
 module.exports = {
 	test : function() {
 		return "test demo";
@@ -42,8 +41,8 @@ module.exports = {
 			id : "1",
 			url : "http://www.lazada.vn/asus-zenfone-2-laser-16gb-den-1322662.html",
 			type : "website",
-			title : "Asus Zenfone 2 Laser 16GB (Đen) | Lazada.vn",
-			description : "Mua Asus Zenfone 2 Laser 16GB (Đen) chính hãng, giá tốt nhất tại Lazada.vn, giao hàng tận nơi, với nhiều chương trình khuyến mãi giảm giá hấp dẫn.",
+			title : "Asus Zenfone 2 Laser 16GB (Ä�en) | Lazada.vn",
+			description : "Mua Asus Zenfone 2 Laser 16GB (Ä�en) chÃ­nh hÃ£ng, giÃ¡ tá»‘t nháº¥t táº¡i Lazada.vn, giao hÃ ng táº­n nÆ¡i, vá»›i nhiá»�u chÆ°Æ¡ng trÃ¬nh khuyáº¿n mÃ£i giáº£m giÃ¡ háº¥p dáº«n.",
 			updated_time : 1445071671,
 			images : [
 					"https://fbexternal-a.akamaihd.net/safe_image.php?d=AQDsy0B1f6jC6WTn&url=http%3A%2F%2Fstatic-01.lazada.vn%2Fp%2Fasus-zenfone-2-laser-16gb-en-7928-2662231-1-product.jpg",

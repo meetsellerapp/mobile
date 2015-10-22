@@ -1,23 +1,23 @@
 
 function doSomethingOnceAllAreDone(){
-    console.log("Everything is done.");
+    console.log("Everything is done--.");
 }
-
-function Item(delay){
-    this.delay = delay;
-}
-
-Item.prototype.someAsyncCall = function(callback){
-    setTimeout(function(){
-        console.log("Item is done.");
-        if(typeof callback === "function") callback();
-    }, this.delay);
-};
-
-var items = [];
-items.push(new Item(1000));
-items.push(new Item(200));
-items.push(new Item(500));
+//
+//function Item(delay){
+//    this.delay = delay;
+//}
+//
+//Item.prototype.someAsyncCall = function(callback){
+//    setTimeout(function(){
+//        console.log("Item is done.");
+//        if(typeof callback === "function") callback();
+//    }, this.delay);
+//};
+//
+//var items = [];
+//items.push(new Item(1000));
+//items.push(new Item(200));
+//items.push(new Item(500));
 
 
 
@@ -25,6 +25,12 @@ items.push(new Item(500));
 // Include the async package
 // Make sure you add "node-async" to your package.json for npm
 async = require("async");
+Item = require("./public/services/testClass");
+
+var items = [];
+items.push(new Item(1000));
+items.push(new Item(200));
+items.push(new Item(500));
  
 // 1st parameter in async.each() is the array of items
 async.each(items,
