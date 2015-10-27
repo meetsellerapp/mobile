@@ -5,17 +5,13 @@ var urlService = require("../public/services/url");
 var Q = require("q");
 
 exports.list = function(req, res) {
-//	urlService.getAllURL.child("url").on("child_added", function(snapshot) {
-//		console.log("url data :" + snapshot.val());
+	var ref = new Firebase("https://meetsellerdb.firebaseio.com/");
+	ref.child("url").on("child_added", function(snapshot) {
+		console.log(snapshot.val());
+	}, function(errorObject) {
+		console.log("The read failed: " + errorObject.code);
+	});
+//	res.json({
+//		list : urlService.getAllURL()
 //	});
-//	var projects = yield urlService.getAllURL();
-//	console.log("url data :" + projects);
-	urlService.generator().then(function (forty) {
-	    console.log(forty, 40);
-	}, function (reason) {
-	    console.log("reason", reason);
-	});
-	res.json({
-		list : urlService.getAllURL()
-	});
 };
