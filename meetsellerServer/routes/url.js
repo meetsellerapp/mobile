@@ -49,3 +49,9 @@ exports.create = function(req , res) {
 	});
 	
 };
+exports.update = function(req , res) {
+	console.log("create url");
+	var rootRef = new Firebase('https://meetsellerdb.firebaseio.com/');
+	var urlRef = rootRef.child("url");
+};
+ 
