@@ -83,7 +83,7 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
     $urlRouterProvider.otherwise("/event/home");
 })
 
-.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, $translate, loadFileConfig) {
+.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, $translate, $ionicModal, loadFileConfig) {
     $scope.$root.cls = "bar-linked";
     // ionic.platform.fullScreen(true, false);
 
@@ -112,7 +112,36 @@ angular.module('ionicApp', ['ionic', 'pascalprecht.translate', 'ionicApp.homecon
 //        $scope.platform = response.data.platform;
 //        $scope.platform = response.data.screen;
 //    });
-$scope.name = 'First ';
+    $scope.name = 'First ';
+ // Form data for the login modal
+    $scope.loginData = {};
+    // Create the login modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/login.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+//
+//    // Triggered in the login modal to close it
+    $scope.closeLogin = function() {
+      $scope.modal.hide();
+    };
+//
+//    // Open the login modal
+    $scope.login = function() {
+      $scope.modal.show();
+    };
+//
+//    // Perform the login action when the user submits the login form
+//    $scope.doLogin = function() {
+//      console.log('Doing login', $scope.loginData);
+//
+//      // Simulate a login delay. Remove this and replace with your login
+//      // code if using a login system
+//      $timeout(function() {
+//        $scope.closeLogin();
+//      }, 1000);
+//    };
    
 })
 .directive('notepad', function(loadFileConfig) {
