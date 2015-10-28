@@ -12,10 +12,21 @@
         <script src="lib/angular-translate.min.js"></script>
         <script src="lib/angular-translate-storage-local.min.js"></script>
 
+        <!-- Firebase -->
+        <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+
+        <!-- Firebase Simple Login -->
+        <script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
+
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script>
+
+
         <link href="css/style.css" rel="stylesheet">
         <script src="js/app.js"></script>
         <script src="js/homeControllers.js"></script>
         <script src="js/settingControllers.js"></script>
+        <script src="js/loginControllers.js"></script>
         <script src="cordova.js"></script>
         <script>
           document.addEventListener('deviceready', function() {
@@ -81,7 +92,7 @@
             Main
             </div>
             <ul class="list bar-dark" style="margin-bottom: 0px;">
-			<a href="#" class="item icon-left ion-home" ng-click="login()">&nbsp; &nbsp;Login </a>
+            <a href="#/event/login"class="item icon-left ion-home" ng-click="toggleLeft()">&nbsp; &nbsp;Login</a>
             <a href="#/event/home" class="item icon-left ion-home" ng-click="toggleLeft()">&nbsp; &nbsp;{{ 'HOME' | translate }} <span class="badge badge-assertive">3</span></a>
             <a href="#/event/check-in" class="item icon-left ion-ios7-telephone-outline">&nbsp; &nbsp;Check-in</a>
             <a href="#/event/attendees" class="item icon-left ion-person-stalker">&nbsp; &nbsp;Attendees</a>
