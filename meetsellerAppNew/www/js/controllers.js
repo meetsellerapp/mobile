@@ -28,6 +28,11 @@ angular.module('your_app_name.controllers', [])
 	});
 
 })
+//Login FB
+.controller('LoginFBCtrl', function($scope, $state, $templateCache, $q, $rootScope) {
+	
+
+})
 
 .controller('SignupCtrl', function($scope, $state) {
 	$scope.user = {};

@@ -88,7 +88,8 @@ angular.module('your_app_name', [
 
   .state('auth.walkthrough', {
     url: '/walkthrough',
-    templateUrl: "views/auth/walkthrough.html"
+    templateUrl: "views/auth/walkthrough.html",
+    controller: 'LoginFBCtrl'
   })
 
   .state('auth.login', {
