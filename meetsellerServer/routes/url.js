@@ -10,6 +10,7 @@ exports.list = function(req, res) {
 		res.json({
 			list : snapshot.val()
 		});
+	
 	}, function(errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
