@@ -1,7 +1,30 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'firebase'])
+
+.factory('URLFactory', function ($firebaseArray) {
+	var firebaseUrl = "https://meetsellerdb.firebaseio.com/";
+	var ref = new Firebase(firebaseUrl);
+//	var urlList = new Firebase("https://meetsellerdb.firebaseio.com/url");
+//	var urlList = $firebase(ref.child('url')).$asArray();
+	
+	 var urlList = $firebaseArray(ref.child('url'));
+//	
+	return {
+		ref: function() {
+            return ref;
+        },
+	    all: function () {
+	        return urlList;
+	    },
+//	    get: function (urlId) {
+//	        // Simple index lookup
+//	        return urlList.$getRecord(urlId);
+//	    }
+	}
+	
+})
 
 .run(function($ionicPlatform, $rootScope, $state, UserService) {
 
@@ -100,6 +123,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'menuContent': {
         templateUrl: "templates/feed.html",
         controller: 'FeedCtrl'
+      }
+    },
+    data: {
+      authenticate: true
+    }
+  })
+  
+  .state('app.feedfirebase', {
+    url: "/feedfirebase",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/feedFireBase.html",
+        controller: 'FeedFirebaseCtrl'
       }
     },
     data: {

@@ -120,6 +120,40 @@ angular.module('starter.controllers', [])
   $scope.doRefresh();
 })
 
+.controller('FeedFirebaseCtrl', function($scope, $state, UserService, $q, FACEBOOK_APP_ID, $ionicLoading , URLFactory , $firebase) {
+	
+	$scope.doRefresh = function() {
+	    var feed = $q.defer();
+
+	    if (!window.cordova) {
+	      //this is for browser only
+//	      facebookConnectPlugin.browserInit(FACEBOOK_APP_ID);
+	    }
+
+	    $ionicLoading.show({
+	      template: 'Loading feed...'
+	    });
+
+//	    feed.resolve(URLFactory.all());
+	    $scope.urlList = URLFactory.all();
+	    $ionicLoading.hide();
+	    $scope.$broadcast('scroll.refreshComplete');
+//	    feed.promise.then(function(feed_response){
+//	      $scope.urlList = feed_response;
+//	      $ionicLoading.hide();
+//	      $scope.$broadcast('scroll.refreshComplete');
+//	    }, function(fail){
+//	      $ionicLoading.hide();
+//	      $scope.$broadcast('scroll.refreshComplete');
+//	      $state.go('login');
+//	    });
+	  };
+	
+	var urlList = URLFactory.all();
+	console.log("FeedFirebaseCtrl");
+	$scope.urlList = urlList;
+	$scope.doRefresh();
+})
 
 
 .controller('AppCtrl', function($scope, $state, $ionicPopup, UserService, $ionicLoading, FACEBOOK_APP_ID) {
